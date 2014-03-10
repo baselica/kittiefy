@@ -1,4 +1,4 @@
-function () {
+(function () {
     document.write = function(str) {
         document.write('apan');
     };
@@ -43,8 +43,7 @@ function () {
         $('iframe, object').each(function(index, element) {
             var $el = $(element);
             var dim = getDim($el);
-            var tmp = '<img class="kfd" class=width="' + dim[0] + '" height="' + dim[1] + '" src="http://placekitten.com/' + dim[0] + '/' + dim[1] + '" />';
-
+            var tmp = '<img class="kfd" class=width="' + dim[0] + '" height="' + dim[1] + '" src="http://placekitten.com/' + dim[0] + '/' + dim[1] + '"/>';
             $el.replaceWith(tmp);
         });
     }
@@ -52,12 +51,12 @@ function () {
     if ('undefined' === typeof jQuery) {
         var version;
         if (document.addEventListener) {
-           version = '2.1.0';
+            version = '2.1.0';
         } else {
-	   version = '1.11.0';
+            version = '1.11.0';
         }
         createScript('http://ajax.aspnetcdn.com/ajax/jQuery/jquery-' + version + '.min.js', callback);
     } else {
         callback.call(this);
     }
-})()
+})();
