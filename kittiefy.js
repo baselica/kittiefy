@@ -50,7 +50,13 @@ function () {
     }
 
     if ('undefined' === typeof jQuery) {
-        createScript('http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.js', callback);
+        var version;
+        if (document.addEventListener) {
+           version = '2.1.0';
+        } else {
+	   version = '1.11.0';
+        }
+        createScript('http://ajax.aspnetcdn.com/ajax/jQuery/jquery-' + version + '.min.js', callback);
     } else {
         callback.call(this);
     }
