@@ -1,8 +1,4 @@
 (function () {
-    document.write = function(str) {
-        document.write('apan');
-    };
-
     function createScript(path, callback) {
         var tag = document.createElement('script');
         tag.src = path;
@@ -43,8 +39,13 @@
         $('iframe, object').each(function(index, element) {
             var $el = $(element);
             var dim = getDim($el);
-            var tmp = '<img class="kfd" class=width="' + dim[0] + '" height="' + dim[1] + '" src="http://placekitten.com/' + dim[0] + '/' + dim[1] + '"/>';
-            $el.replaceWith(tmp);
+            var img = document.createElement('img');
+            img.className = 'kfd';
+            img.setAttribute('width', dim[0]);
+            img.setAttribute('height', dim[1]);
+            img.src = 'http://placekitten.com/' + dim[0] + '/' + dim[1];
+
+            $el.replaceWith(img);
         });
     }
 
