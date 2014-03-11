@@ -31,22 +31,19 @@
                 }
             });
 
-            iframeCb.call(this);
+            $('iframe, object').each(function(index, element) {
+                var $el = $(element);
+                var dim = getDim($el);
+                var img = document.createElement('img');
+                img.className = 'kfd';
+                img.setAttribute('width', dim[0]);
+                img.setAttribute('height', dim[1]);
+                img.src = 'http://placekitten.com/' + dim[0] + '/' + dim[1];
+
+                $el.replaceWith(img);
+            });
+
         }, 4000);
-    }
-
-    function iframeCb() {
-        $('iframe, object').each(function(index, element) {
-            var $el = $(element);
-            var dim = getDim($el);
-            var img = document.createElement('img');
-            img.className = 'kfd';
-            img.setAttribute('width', dim[0]);
-            img.setAttribute('height', dim[1]);
-            img.src = 'http://placekitten.com/' + dim[0] + '/' + dim[1];
-
-            $el.replaceWith(img);
-        });
     }
 
     if ('undefined' === typeof jQuery) {
